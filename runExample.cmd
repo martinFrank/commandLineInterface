@@ -1,0 +1,1 @@
+java -cp target/cli-1.0-SNAPSHOT.jar de.elite.games.cli.example.App

@@ -8,10 +8,8 @@
     <artifactId>cli</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
     <build>
         <pluginManagement>
-
             <plugins>
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
@@ -50,6 +48,7 @@
 
             </plugins>
         </pluginManagement>
+
         <plugins>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
