@@ -2,7 +2,7 @@ package de.elite.games.cli;
 
 import org.junit.Test;
 
-public class HangmanTest {
+public class CommandLineInterfaceTest {
 
     @Test
     public void test() {
