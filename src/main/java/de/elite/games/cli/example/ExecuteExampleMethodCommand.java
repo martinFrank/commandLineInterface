@@ -13,7 +13,7 @@ class ExecuteExampleMethodCommand extends Command<ExampleApplication> {
 
     @Override
     public Response execute(ExampleApplication invoked, List<String> parameter) {
-        boolean wasSuccesful = invoked.exampleMethod(parameter);
-        return wasSuccesful ? Response.success() : Response.fail("couldn't invoke method");
+        boolean wasSuccessful = invoked.exampleMethod(parameter);
+        return wasSuccessful ? Response.success() : Response.fail("couldn't invoke method");
     }
 }

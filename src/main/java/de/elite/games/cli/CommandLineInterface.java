@@ -56,7 +56,7 @@ public class CommandLineInterface implements CommandLineInterpreter<CommandLineI
 
     private void showHelp() {
         Set<Command<?>> commands = getAllCommands();
-        output.println("help - these commands are availible:");
+        output.println("help - these commands are available:");
         commands.forEach(c -> output.printf(" - %s\n", c.getIdentifier()));
     }
 
