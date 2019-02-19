@@ -3,7 +3,7 @@ package de.elite.games.cli;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class Command {
+public abstract class Command<M> {
 
     private final String identifier;
 
@@ -11,13 +11,13 @@ public abstract class Command {
         this.identifier = identifier;
     }
 
-    public abstract Response execute(List<String> parameter);
+    public abstract Response execute(M invoked, List<String> parameter);
 
-    String getIdentifier() {
+    public String getIdentifier() {
         return identifier;
     }
 
-    boolean isIdentifier(String ident) {
+    public boolean isIdentifier(String ident) {
         return identifier.equals(ident);
     }
 

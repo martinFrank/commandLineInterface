@@ -4,7 +4,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.*;
 
-public class CommandLineInterface implements CommandLineInterpreter {
+public class CommandLineInterface implements CommandLineInterpreter<CommandLineInterface> {
 
     private static final String COMMAND_SEPARATOR = " ";
     private final CommandLineInterpreter cli;
@@ -12,7 +12,7 @@ public class CommandLineInterface implements CommandLineInterpreter {
     private final PrintStream output;
     private boolean isRunning = true;
 
-    public CommandLineInterface(CommandLineInterpreter cli, InputStream input, PrintStream output) {
+    public CommandLineInterface(CommandLineInterpreter<?> cli, InputStream input, PrintStream output) {
         if (cli == null || hasPredefinedCommands(cli.getCommands())) {
             throw new RuntimeException("CommandLineInterpreter interface of " + cli + " is not properly implemented");
         }
@@ -21,7 +21,7 @@ public class CommandLineInterface implements CommandLineInterpreter {
         this.output = output;
     }
 
-    private boolean hasPredefinedCommands(Set<Command> commands) {
+    private boolean hasPredefinedCommands(Set<? extends Command<?>> commands) {
         return !Collections.disjoint(commands, getCommands());
     }
 
@@ -55,7 +55,7 @@ public class CommandLineInterface implements CommandLineInterpreter {
     }
 
     private void showHelp() {
-        Set<Command> commands = getAllCommands();
+        Set<Command<?>> commands = getAllCommands();
         output.println("help - these commands are availible:");
         commands.forEach(c -> output.printf(" - %s\n", c.getIdentifier()));
     }
@@ -65,18 +65,18 @@ public class CommandLineInterface implements CommandLineInterpreter {
     }
 
     @Override
-    public Set<Command> getCommands() {
-        Set<Command> cliCommands = new HashSet<>();
-        cliCommands.add(new Command("exit") {
+    public Set<Command<CommandLineInterface>> getCommands() {
+        Set<Command<CommandLineInterface>> cliCommands = new HashSet<>();
+        cliCommands.add(new Command<CommandLineInterface>("exit") {
             @Override
-            public Response execute(List<String> parameter) {
+            public Response execute(CommandLineInterface commandLineInterface, List<String> parameter) {
                 isRunning = false;
                 return Response.success();
             }
         });
-        cliCommands.add(new Command("help") {
+        cliCommands.add(new Command<CommandLineInterface>("help") {
             @Override
-            public Response execute(List<String> parameter) {
+            public Response execute(CommandLineInterface commandLineInterface, List<String> parameter) {
                 showHelp();
                 return Response.success();
             }
@@ -84,18 +84,27 @@ public class CommandLineInterface implements CommandLineInterpreter {
         return cliCommands;
     }
 
-    private Set<Command> getAllCommands() {
-        Set<Command> commands = new HashSet<>(cli.getCommands());
+    private Set<Command<?>> getAllCommands() {
+        Set<Command<?>> commands = mapCommands(cli.getCommands());
         commands.addAll(getCommands());
         return commands;
     }
 
+    private Set<Command<?>> mapCommands(Set commands) {
+        Set<Command<?>> mappedCommands = new HashSet<>();
+        for (Object o : commands) mapCommand(o).ifPresent(mappedCommands::add);
+        return mappedCommands;
+    }
+
+    private Optional<Command<?>> mapCommand(Object o) {
+        return (o instanceof Command<?>) ? Optional.of((Command<?>) o) : Optional.empty();
+    }
 
     @Override
     public Response executeCommand(String identifier, List<String> parameter) {
-        Optional<Command> cmd = getCommands().stream().filter(command -> command.isIdentifier(identifier)).findAny();
+        Optional<Command<CommandLineInterface>> cmd = getCommands().stream().filter(command -> command.isIdentifier(identifier)).findAny();
         if (cmd.isPresent()) {
-            return cmd.get().execute(parameter);
+            return cmd.get().execute(this, parameter);
         } else {
             return cli.executeCommand(identifier, parameter);
         }
