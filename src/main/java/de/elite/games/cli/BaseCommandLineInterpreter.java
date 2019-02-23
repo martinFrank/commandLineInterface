@@ -11,6 +11,10 @@ public abstract class BaseCommandLineInterpreter<M> implements CommandLineInterp
         this.m = m;
     }
 
+    public M getApplication() {
+        return m;
+    }
+
     @Override
     public Response executeCommand(String identifier, List<String> parameter) {
         Optional<Command<M>> command = getCommands().stream().filter(cmd -> cmd.isIdentifier(identifier)).findFirst();
