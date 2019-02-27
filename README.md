@@ -1,8 +1,8 @@
 # commandLineInterface
-ComandLineInteraction
+CommandLineInteraction
 
 this library provides a command line interface for apps.
-The ComandLineInteraction is the centered Class here. it takes the Input
+The CommandLineInteraction is the centered Class here. it takes the Input
 from CommandLine and maps it into proper commands. These
 commands are given to the CommandLineInterpreter, who's responsible to
 execute it.

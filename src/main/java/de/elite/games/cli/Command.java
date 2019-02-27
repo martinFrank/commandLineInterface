@@ -3,15 +3,21 @@ package de.elite.games.cli;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class Command<M> {
+public abstract class Command<Application> {
 
     private final String identifier;
+    private final Application application;
 
-    public Command(String identifier) {
+    public Command(Application application, String identifier) {
+        this.application = application;
         this.identifier = identifier;
     }
 
-    public abstract Response execute(M invoked, List<String> parameter);
+    public Application getApplication() {
+        return application;
+    }
+
+    public abstract Response execute(List<String> parameter);
 
     public String getIdentifier() {
         return identifier;
