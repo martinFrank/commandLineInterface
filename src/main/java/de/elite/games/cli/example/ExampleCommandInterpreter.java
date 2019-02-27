@@ -14,7 +14,7 @@ public class ExampleCommandInterpreter extends BaseCommandLineInterpreter<Exampl
     }
 
     @Override
-    public Set<Command<ExampleApplication>> getCommands() {
+    public Set<Command> getCommands() {
         return new HashSet<>(Collections.singleton(new ExecuteExampleMethodCommand()));
     }
 }

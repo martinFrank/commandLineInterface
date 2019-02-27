@@ -7,7 +7,7 @@ import de.elite.games.cli.Response;
 import java.util.List;
 import java.util.Set;
 
-public class ExampleApplication implements CommandLineInterpreter<ExampleApplication> {
+public class ExampleApplication implements CommandLineInterpreter {
 
     private ExampleCommandInterpreter commandLineInterpreter;
 
@@ -21,7 +21,7 @@ public class ExampleApplication implements CommandLineInterpreter<ExampleApplica
     }
 
     @Override
-    public Set<Command<ExampleApplication>> getCommands() {
+    public Set<Command> getCommands() {
         return commandLineInterpreter.getCommands();
     }
 

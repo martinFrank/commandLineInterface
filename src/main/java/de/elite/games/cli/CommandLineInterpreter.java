@@ -3,9 +3,9 @@ package de.elite.games.cli;
 import java.util.List;
 import java.util.Set;
 
-public interface CommandLineInterpreter<M> {
+public interface CommandLineInterpreter {
 
-    Set<Command<M>> getCommands();
+    Set<Command> getCommands();
 
     Response executeCommand(String identifier, List<String> parameter);
 

@@ -3,7 +3,7 @@ package de.elite.games.cli;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class BaseCommandLineInterpreter<M> implements CommandLineInterpreter<M> {
+public abstract class BaseCommandLineInterpreter<M> implements CommandLineInterpreter {
 
     private final M m;
 
@@ -17,7 +17,7 @@ public abstract class BaseCommandLineInterpreter<M> implements CommandLineInterp
 
     @Override
     public Response executeCommand(String identifier, List<String> parameter) {
-        Optional<Command<M>> command = getCommands().stream().filter(cmd -> cmd.isIdentifier(identifier)).findFirst();
+        Optional<Command> command = getCommands().stream().filter(cmd -> cmd.isIdentifier(identifier)).findFirst();
         if (command.isPresent()) {
             return command.get().execute(m, parameter);
         }
