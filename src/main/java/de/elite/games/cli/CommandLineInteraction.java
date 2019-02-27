@@ -28,12 +28,6 @@ public class CommandLineInteraction implements CommandLineInterpreter {
         return commandLineInteractionInterpreter.getCommands();
     }
 
-    public Set<Command> getAllCommands() {
-        Set<Command> commands = cli.getCommands();
-        commands.addAll(commandLineInteractionInterpreter.getCommands());
-        return commands;
-    }
-
     public void start() {
         Scanner scanner = new Scanner(input);
         showHelp();
@@ -43,7 +37,7 @@ public class CommandLineInteraction implements CommandLineInterpreter {
             List<String> words = Arrays.asList(line1.split(COMMAND_SEPARATOR));
             String identifier = words.get(0);
             List<String> parameters = words.subList(1, words.size());
-            Optional<Command> command = getCommand(identifier);
+            Optional<Command> command = findCommand(identifier);
             if (command.isPresent()) {
                 Response response = command.get().execute(parameters);
                 if (response.failed()) {
@@ -55,8 +49,14 @@ public class CommandLineInteraction implements CommandLineInterpreter {
         }
     }
 
-    private Optional<Command> getCommand(String identifier) {
+    private Optional<Command> findCommand(String identifier) {
         return getAllCommands().stream().filter(c -> c.isIdentifier(identifier)).findAny();
+    }
+
+    private Set<Command> getAllCommands() {
+        Set<Command> commands = cli.getCommands();
+        commands.addAll(commandLineInteractionInterpreter.getCommands());
+        return commands;
     }
 
     public void showHelp() {
