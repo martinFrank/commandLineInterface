@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 
 public class ExampleApplication implements CommandLineInterpreter {
 
-    private ExampleCommandInterpreter commandLineInterpreter;
+    private final ExampleCommandInterpreter commandLineInterpreter;
 
     ExampleApplication() {
         commandLineInterpreter = new ExampleCommandInterpreter(this);

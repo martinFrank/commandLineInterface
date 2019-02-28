@@ -19,7 +19,7 @@ public class DefaultCommandMapping implements CommandMapping {
 
     @Override
     public void addAll(CommandMapping commands) {
-        commands.asList().stream().forEach(this::add);
+        commands.asList().forEach(this::add);
     }
 
     @Override
