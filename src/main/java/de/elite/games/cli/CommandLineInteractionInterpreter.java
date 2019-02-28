@@ -9,7 +9,7 @@ public class CommandLineInteractionInterpreter implements CommandLineInterpreter
 
     private final DefaultCommandMapping commandMapping;
 
-    CommandLineInteractionInterpreter(CommandLineInteraction commandLineInterface) {
+    CommandLineInteractionInterpreter(CommandLineInterface commandLineInterface) {
         super();
         commandMapping = new DefaultCommandMapping();
         commandMapping.add(new HelpCommand(commandLineInterface));

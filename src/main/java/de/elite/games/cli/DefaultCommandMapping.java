@@ -26,4 +26,14 @@ public class DefaultCommandMapping implements CommandMapping {
     public Optional<Command> findCommand(String identifier) {
         return Optional.ofNullable(commands.get(identifier));
     }
+
+    @Override
+    public boolean hasCommands(String... commands) {
+        for (String command : commands) {
+            if (!findCommand(command).isPresent()) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

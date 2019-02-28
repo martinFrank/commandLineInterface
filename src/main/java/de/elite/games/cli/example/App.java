@@ -1,12 +1,12 @@
 package de.elite.games.cli.example;
 
-import de.elite.games.cli.CommandLineInteraction;
+import de.elite.games.cli.CommandLineInterface;
 
 public class App {
 
     public static void main(String[] args) {
         ExampleApplication app = new ExampleApplication();
-        CommandLineInteraction commandLineInteraction = new CommandLineInteraction(app, System.in, System.out);
-        commandLineInteraction.start();
+        CommandLineInterface commandLineInterface = new CommandLineInterface(app, System.in, System.out);
+        commandLineInterface.start();
     }
 }

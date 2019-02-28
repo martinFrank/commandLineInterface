@@ -1,14 +1,14 @@
 package de.elite.games.cli.command;
 
 import de.elite.games.cli.Command;
-import de.elite.games.cli.CommandLineInteraction;
+import de.elite.games.cli.CommandLineInterface;
 import de.elite.games.cli.Response;
 
 import java.util.List;
 
-public class ExitCommand extends Command<CommandLineInteraction> {
+public class ExitCommand extends Command<CommandLineInterface> {
 
-    public ExitCommand(CommandLineInteraction commandLineInteraction) {
+    public ExitCommand(CommandLineInterface commandLineInteraction) {
         super(commandLineInteraction, "exit");
     }
 

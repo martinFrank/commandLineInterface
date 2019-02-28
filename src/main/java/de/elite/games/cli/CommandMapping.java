@@ -10,4 +10,6 @@ public interface CommandMapping {
     void addAll(CommandMapping commands);
 
     Optional<Command> findCommand(String identifier);
+
+    boolean hasCommands(String... commands);
 }

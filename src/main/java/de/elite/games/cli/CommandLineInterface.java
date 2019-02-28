@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class CommandLineInteraction implements CommandLineInterpreter {
+public class CommandLineInterface implements CommandLineInterpreter {
 
     private static final String COMMAND_SEPARATOR = " ";
     private static final String COMMAND_PROMPT = "$>";
@@ -17,7 +17,7 @@ public class CommandLineInteraction implements CommandLineInterpreter {
     private final PrintStream output;
     private boolean isRunning = true;
 
-    public CommandLineInteraction(CommandLineInterpreter cli, InputStream input, PrintStream output) {
+    public CommandLineInterface(CommandLineInterpreter cli, InputStream input, PrintStream output) {
         commandLineInteractionInterpreter = new CommandLineInteractionInterpreter(this);
         if (cli == null || commandLineInteractionInterpreter.hasCommandInCommon(cli)) {
             throw new RuntimeException("CommandLineInterpreter interface of " + cli + " is not properly implemented");
