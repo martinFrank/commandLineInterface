@@ -12,13 +12,13 @@ public class CommandLineInterface implements CommandLineInterpreter {
     private static final String COMMAND_SEPARATOR = " ";
     private static final String COMMAND_PROMPT = "$>";
     private final CommandLineInterpreter cli;
-    private final CommandLineInteractionInterpreter commandLineInteractionInterpreter;
+    private final CommandLineInterfaceInterpreter commandLineInteractionInterpreter;
     private final InputStream input;
     private final PrintStream output;
     private boolean isRunning = true;
 
     public CommandLineInterface(CommandLineInterpreter cli, InputStream input, PrintStream output) {
-        commandLineInteractionInterpreter = new CommandLineInteractionInterpreter(this);
+        commandLineInteractionInterpreter = new CommandLineInterfaceInterpreter(this);
         if (cli == null || commandLineInteractionInterpreter.hasCommandInCommon(cli)) {
             throw new RuntimeException("CommandLineInterpreter interface of " + cli + " is not properly implemented");
         }
