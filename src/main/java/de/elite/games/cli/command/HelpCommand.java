@@ -8,8 +8,8 @@ import java.util.List;
 
 public class HelpCommand extends Command<CommandLineInterface> {
 
-    public HelpCommand(CommandLineInterface commandLineInteraction) {
-        super(commandLineInteraction, "help");
+    public HelpCommand(CommandLineInterface commandLineInterface) {
+        super(commandLineInterface, "help");
     }
 
     @Override

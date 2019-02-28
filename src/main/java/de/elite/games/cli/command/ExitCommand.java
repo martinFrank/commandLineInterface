@@ -8,8 +8,8 @@ import java.util.List;
 
 public class ExitCommand extends Command<CommandLineInterface> {
 
-    public ExitCommand(CommandLineInterface commandLineInteraction) {
-        super(commandLineInteraction, "exit");
+    public ExitCommand(CommandLineInterface commandLineInterface) {
+        super(commandLineInterface, "exit");
     }
 
     @Override
