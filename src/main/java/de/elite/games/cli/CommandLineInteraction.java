@@ -2,11 +2,15 @@ package de.elite.games.cli;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class CommandLineInteraction implements CommandLineInterpreter {
 
     private static final String COMMAND_SEPARATOR = " ";
+    private static final String COMMAND_PROMPT = "$>";
     private final CommandLineInterpreter cli;
     private final CommandLineInteractionInterpreter commandLineInteractionInterpreter;
     private final InputStream input;
@@ -24,7 +28,7 @@ public class CommandLineInteraction implements CommandLineInterpreter {
     }
 
     @Override
-    public Set<Command> getCommands() {
+    public CommandMapping getCommands() {
         return commandLineInteractionInterpreter.getCommands();
     }
 
@@ -32,12 +36,13 @@ public class CommandLineInteraction implements CommandLineInterpreter {
         Scanner scanner = new Scanner(input);
         showHelp();
         while (isRunning) {
-            output.print("$>");
-            String line1 = scanner.nextLine();
-            List<String> words = Arrays.asList(line1.split(COMMAND_SEPARATOR));
+            output.print(COMMAND_PROMPT);
+            String line = scanner.nextLine();
+            List<String> words = Arrays.asList(line.split(COMMAND_SEPARATOR));
             String identifier = words.get(0);
             List<String> parameters = words.subList(1, words.size());
-            Optional<Command> command = findCommand(identifier);
+
+            Optional<Command> command = getAllCommands().findCommand(identifier);
             if (command.isPresent()) {
                 Response response = command.get().execute(parameters);
                 if (response.failed()) {
@@ -49,23 +54,20 @@ public class CommandLineInteraction implements CommandLineInterpreter {
         }
     }
 
-    private Optional<Command> findCommand(String identifier) {
-        return getAllCommands().stream().filter(c -> c.isIdentifier(identifier)).findAny();
-    }
-
-    private Set<Command> getAllCommands() {
-        Set<Command> commands = cli.getCommands();
-        commands.addAll(commandLineInteractionInterpreter.getCommands());
-        return commands;
+    public void stop() {
+        isRunning = false;
     }
 
     public void showHelp() {
-        Set<Command> commands = getAllCommands();
+        CommandMapping commands = getAllCommands();
         output.println("help - these commands are available:");
-        commands.forEach(c -> output.printf(" - %s\n", c.getIdentifier()));
+        commands.asList().forEach(c -> output.printf(" - %s\n", c.getIdentifier()));
     }
 
-    public void stop() {
-        isRunning = false;
+    private CommandMapping getAllCommands() {
+        CommandMapping commands = new DefaultCommandMapping();
+        commands.addAll(cli.getCommands());
+        commands.addAll(commandLineInteractionInterpreter.getCommands());
+        return commands;
     }
 }

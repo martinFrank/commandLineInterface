@@ -1,10 +1,9 @@
 package de.elite.games.cli.example;
 
-import de.elite.games.cli.Command;
 import de.elite.games.cli.CommandLineInterpreter;
+import de.elite.games.cli.CommandMapping;
 
 import java.util.List;
-import java.util.Set;
 
 public class ExampleApplication implements CommandLineInterpreter {
 
@@ -20,7 +19,7 @@ public class ExampleApplication implements CommandLineInterpreter {
     }
 
     @Override
-    public Set<Command> getCommands() {
+    public CommandMapping getCommands() {
         return commandLineInterpreter.getCommands();
     }
 
