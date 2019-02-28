@@ -12,7 +12,9 @@ public class DefaultCommandMapping implements CommandMapping {
 
     @Override
     public List<Command> asList() {
-        return new ArrayList(commands.entrySet());
+        List<Command> list = new ArrayList<>(commands.values());
+        list.sort(Comparator.comparing(Command::getIdentifier));
+        return list;
     }
 
     @Override
