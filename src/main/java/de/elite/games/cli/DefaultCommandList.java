@@ -2,7 +2,7 @@ package de.elite.games.cli;
 
 import java.util.*;
 
-public class DefaultCommandMapping implements CommandMapping {
+public class DefaultCommandList implements CommandList {
 
     private final Map<String, Command> commands = new HashMap<>();
 
@@ -18,7 +18,7 @@ public class DefaultCommandMapping implements CommandMapping {
     }
 
     @Override
-    public void addAll(CommandMapping commands) {
+    public void addAll(CommandList commands) {
         commands.asList().forEach(this::add);
     }
 

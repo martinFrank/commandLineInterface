@@ -1,19 +1,19 @@
 package de.elite.games.cli.example;
 
-import de.elite.games.cli.CommandLineInterpreter;
-import de.elite.games.cli.CommandMapping;
+import de.elite.games.cli.CommandList;
+import de.elite.games.cli.CommandProvider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class ExampleApplication implements CommandLineInterpreter {
+public class ExampleApplication implements CommandProvider {
 
-    private final ExampleCommandInterpreter commandLineInterpreter;
+    private final ExampleCommandProvider exampleCommandProvider;
 
     ExampleApplication() {
-        commandLineInterpreter = new ExampleCommandInterpreter(this);
+        exampleCommandProvider = new ExampleCommandProvider(this);
     }
 
     public boolean exampleMethod(List<String> parameter) {
@@ -49,8 +49,8 @@ public class ExampleApplication implements CommandLineInterpreter {
     }
 
     @Override
-    public CommandMapping getCommands() {
-        return commandLineInterpreter.getCommands();
+    public CommandList getCommands() {
+        return exampleCommandProvider.getCommands();
     }
 
 }

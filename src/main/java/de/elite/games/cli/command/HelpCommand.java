@@ -1,15 +1,15 @@
 package de.elite.games.cli.command;
 
 import de.elite.games.cli.Command;
-import de.elite.games.cli.CommandLineInterface;
+import de.elite.games.cli.CommandLineInterpreter;
 import de.elite.games.cli.Response;
 
 import java.util.List;
 
-public class HelpCommand extends Command<CommandLineInterface> {
+public class HelpCommand extends Command<CommandLineInterpreter> {
 
-    public HelpCommand(CommandLineInterface commandLineInterface) {
-        super(commandLineInterface, "help");
+    public HelpCommand(CommandLineInterpreter commandLineInterpreter) {
+        super(commandLineInterpreter, "help");
     }
 
     @Override

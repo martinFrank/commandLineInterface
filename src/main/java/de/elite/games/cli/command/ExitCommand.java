@@ -1,15 +1,15 @@
 package de.elite.games.cli.command;
 
 import de.elite.games.cli.Command;
-import de.elite.games.cli.CommandLineInterface;
+import de.elite.games.cli.CommandLineInterpreter;
 import de.elite.games.cli.Response;
 
 import java.util.List;
 
-public class ExitCommand extends Command<CommandLineInterface> {
+public class ExitCommand extends Command<CommandLineInterpreter> {
 
-    public ExitCommand(CommandLineInterface commandLineInterface) {
-        super(commandLineInterface, "exit");
+    public ExitCommand(CommandLineInterpreter commandLineInterpreter) {
+        super(commandLineInterpreter, "exit");
     }
 
     @Override
