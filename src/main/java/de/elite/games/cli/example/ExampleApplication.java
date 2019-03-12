@@ -10,10 +10,10 @@ import java.util.stream.IntStream;
 
 public class ExampleApplication implements CommandProvider {
 
-    private final ExampleCommandProvider exampleCommandProvider;
+    private final ExampleAppCommandProvider exampleAppCommandProvider;
 
     ExampleApplication() {
-        exampleCommandProvider = new ExampleCommandProvider(this);
+        exampleAppCommandProvider = new ExampleAppCommandProvider(this);
     }
 
     public boolean exampleMethod(List<String> parameter) {
@@ -50,7 +50,7 @@ public class ExampleApplication implements CommandProvider {
 
     @Override
     public CommandList getCommands() {
-        return exampleCommandProvider.getCommands();
+        return exampleAppCommandProvider.getCommands();
     }
 
 }

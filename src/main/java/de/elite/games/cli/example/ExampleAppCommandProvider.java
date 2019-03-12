@@ -6,11 +6,11 @@ import de.elite.games.cli.DefaultCommandList;
 import de.elite.games.cli.example.command.CountCommand;
 import de.elite.games.cli.example.command.ExecuteExampleMethodCommand;
 
-public class ExampleCommandProvider implements CommandProvider {
+public class ExampleAppCommandProvider implements CommandProvider {
 
     private final DefaultCommandList commands;
 
-    ExampleCommandProvider(ExampleApplication exampleApplication) {
+    ExampleAppCommandProvider(ExampleApplication exampleApplication) {
         super();
         commands = new DefaultCommandList();
         commands.add(new ExecuteExampleMethodCommand(exampleApplication));
