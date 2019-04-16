@@ -16,6 +16,7 @@ public class CommandLineInterfaceTest {
         CommandLineInterpreter commandLineInterface = new CommandLineInterpreter(app, System.in, System.out);
         List<Command> exampleAppComands = app.getCommands().asList();
         Assert.assertEquals(2, exampleAppComands.size()); //we added two commands
+        Assert.assertTrue(app.getCommands().hasCommands(exampleAppComands.get(0).getIdentifier(), exampleAppComands.get(1).getIdentifier()));
         List<Command> cliCommands = commandLineInterface.getCommands().asList();
         Assert.assertEquals(2, cliCommands.size()); //two internal
     }
