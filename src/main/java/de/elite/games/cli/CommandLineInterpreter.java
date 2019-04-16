@@ -61,7 +61,7 @@ public class CommandLineInterpreter implements CommandProvider {
     public void showHelp() {
         CommandList commands = getAllCommands();
         output.println("help - these commands are available:");
-        commands.asList().forEach(c -> output.printf(" - %s\n", c.getIdentifier()));
+        commands.asList().forEach(c -> output.printf(" - %s%n", c.getIdentifier()));
     }
 
     private CommandList getAllCommands() {

@@ -3,17 +3,17 @@ package de.elite.games.cli;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class Command<Application> {
+public abstract class Command<A> {
 
     private final String identifier;
-    private final Application application;
+    private final A application;
 
-    public Command(Application application, String identifier) {
+    public Command(A application, String identifier) {
         this.application = application;
         this.identifier = identifier;
     }
 
-    public Application getApplication() {
+    public A getApplication() {
         return application;
     }
 

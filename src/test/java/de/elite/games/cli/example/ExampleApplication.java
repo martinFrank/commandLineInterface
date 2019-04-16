@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 public class ExampleApplication implements CommandProvider {
 
     private final ExampleAppCommandProvider exampleAppCommandProvider;
+    private String countResult = "";
 
     public ExampleApplication() {
         exampleAppCommandProvider = new ExampleAppCommandProvider(this);
@@ -21,7 +22,12 @@ public class ExampleApplication implements CommandProvider {
         return true;
     }
 
+    public String getCountResult() {
+        return countResult;
+    }
+
     public boolean count(List<String> parameter) {
+        countResult = "";
         List<String> p2 = new ArrayList<>(parameter);
         if (p2.size() == 1) {
             p2.add("0");
@@ -39,13 +45,13 @@ public class ExampleApplication implements CommandProvider {
                 start = temp;
                 System.out.println("correcting start/stop order");
             }
-            System.out.println(Arrays.toString(IntStream.rangeClosed(start, end).toArray()));
+            countResult = Arrays.toString(IntStream.rangeClosed(start, end).toArray());
+            System.out.println(countResult);
             return true;
         } catch (NumberFormatException e) {
             System.out.println("error parsing parameter");
             return false;
         }
-
     }
 
     @Override
