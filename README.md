@@ -10,3 +10,5 @@ execute it.
 To make that concept working, the Interpreter offers a set of commands,
 which can be executed.
 
+### news
+finally i managed to add support for [sonar cloud](https://sonarcloud.io/dashboard?id=martinFrank_cli)
