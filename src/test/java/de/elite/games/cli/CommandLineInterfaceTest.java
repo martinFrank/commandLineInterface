@@ -28,8 +28,31 @@ public class CommandLineInterfaceTest {
             ExampleApplication app = new ExampleApplication();
             CommandLineInterpreter commandLineInterface = new CommandLineInterpreter(app, is, ps);
             commandLineInterface.start();
-            Assert.assertTrue(app.getCountResult().contains("[1, 2, 3]"));
+            Assert.assertEquals("[1, 2, 3]", app.getCountResult());
         }
-        //no exception - thats good, test passed
+    }
+
+    @Test
+    public void testMismatchingCommand() throws UnsupportedEncodingException {
+        InputStream is = new ByteArrayInputStream("sauron\ncount 1 3\nexit".getBytes(Charset.defaultCharset()));
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try (PrintStream ps = new PrintStream(baos, true, Charset.defaultCharset().toString())) {
+            ExampleApplication app = new ExampleApplication();
+            CommandLineInterpreter commandLineInterface = new CommandLineInterpreter(app, is, ps);
+            commandLineInterface.start();
+            Assert.assertEquals("[1, 2, 3]", app.getCountResult());
+        }
+    }
+
+    @Test
+    public void testWrongParameterCommand() throws UnsupportedEncodingException {
+        InputStream is = new ByteArrayInputStream("sauron\ncount a g\nexit".getBytes(Charset.defaultCharset()));
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try (PrintStream ps = new PrintStream(baos, true, Charset.defaultCharset().toString())) {
+            ExampleApplication app = new ExampleApplication();
+            CommandLineInterpreter commandLineInterface = new CommandLineInterpreter(app, is, ps);
+            commandLineInterface.start();
+            Assert.assertEquals("", app.getCountResult());
+        }
     }
 }
