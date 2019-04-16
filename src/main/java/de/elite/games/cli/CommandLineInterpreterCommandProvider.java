@@ -4,6 +4,8 @@ import de.elite.games.cli.command.ExitCommand;
 import de.elite.games.cli.command.HelpCommand;
 
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CommandLineInterpreterCommandProvider implements CommandProvider {
 
@@ -23,7 +25,11 @@ public class CommandLineInterpreterCommandProvider implements CommandProvider {
     }
 
     boolean hasCommandInCommon(CommandProvider cip) {
-        return !Collections.disjoint(cip.getCommands().asList(), getCommands().asList());
+        List<String> cipCommands = cip.getCommands().asList().stream().
+                map(Command::getIdentifier).collect(Collectors.toList());
+        List<String> selfCommands = getCommands().asList().stream().
+                map(Command::getIdentifier).collect(Collectors.toList());
+        return !Collections.disjoint(selfCommands, cipCommands);
     }
 
 }

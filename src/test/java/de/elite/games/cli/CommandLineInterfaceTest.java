@@ -56,4 +56,11 @@ public class CommandLineInterfaceTest {
             Assert.assertEquals("", app.getCountResult());
         }
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testCliStartUp() {
+        FaultyApplication app = new FaultyApplication();
+        new CommandLineInterpreter(app, System.in, System.out);
+
+    }
 }
