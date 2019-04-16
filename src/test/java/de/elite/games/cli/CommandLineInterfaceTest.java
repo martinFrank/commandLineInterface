@@ -28,17 +28,8 @@ public class CommandLineInterfaceTest {
             ExampleApplication app = new ExampleApplication();
             CommandLineInterpreter commandLineInterface = new CommandLineInterpreter(app, is, ps);
             commandLineInterface.start();
+            Assert.assertTrue(app.getCountResult().contains("[1, 2, 3]"));
         }
         //no exception - thats good, test passed
-    }
-
-    @Test
-    public void testCountCommand() throws UnsupportedEncodingException {
-        InputStream is = new ByteArrayInputStream("count 1 3\nexit\n".getBytes(Charset.defaultCharset()));
-        ExampleApplication app = new ExampleApplication();
-        CommandLineInterpreter commandLineInterface = new CommandLineInterpreter(app, is, System.out);
-        commandLineInterface.start();
-        Assert.assertTrue(app.getCountResult().contains("[1, 2, 3]"));
-
     }
 }

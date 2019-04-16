@@ -20,7 +20,7 @@ public class CommandLineInterpreter implements CommandProvider {
     public CommandLineInterpreter(CommandProvider commandProvider, InputStream input, PrintStream output) {
         interpreterCommands = new CommandLineInterpreterCommandProvider(this);
         if (commandProvider == null || interpreterCommands.hasCommandInCommon(commandProvider)) {
-            throw new RuntimeException("CommandProvider interface of " + commandProvider + " is not properly implemented");
+            throw new IllegalArgumentException("CommandProvider interface of " + commandProvider + " is not properly implemented");
         }
         this.commandProvider = commandProvider;
         this.input = input;
