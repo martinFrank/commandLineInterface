@@ -1,4 +1,4 @@
-package de.elite.games.cli;
+package com.github.martinfrank.cli;
 
 public interface CommandProvider {
 

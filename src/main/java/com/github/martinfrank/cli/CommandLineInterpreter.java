@@ -1,4 +1,4 @@
-package de.elite.games.cli;
+package com.github.martinfrank.cli;
 
 import java.io.InputStream;
 import java.io.PrintStream;

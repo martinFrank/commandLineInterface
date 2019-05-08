@@ -1,6 +1,6 @@
-package de.elite.games.cli.example;
+package com.github.martinfrank.cli.example;
 
-import de.elite.games.cli.CommandLineInterpreter;
+import com.github.martinfrank.cli.CommandLineInterpreter;
 
 public class App {
 

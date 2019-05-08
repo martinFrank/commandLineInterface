@@ -1,10 +1,10 @@
-package de.elite.games.cli.example;
+package com.github.martinfrank.cli.example;
 
-import de.elite.games.cli.CommandList;
-import de.elite.games.cli.CommandProvider;
-import de.elite.games.cli.DefaultCommandList;
-import de.elite.games.cli.example.command.CountCommand;
-import de.elite.games.cli.example.command.ExecuteExampleMethodCommand;
+import com.github.martinfrank.cli.CommandList;
+import com.github.martinfrank.cli.CommandProvider;
+import com.github.martinfrank.cli.DefaultCommandList;
+import com.github.martinfrank.cli.example.command.CountCommand;
+import com.github.martinfrank.cli.example.command.ExecuteExampleMethodCommand;
 
 public class ExampleAppCommandProvider implements CommandProvider {
 

@@ -1,6 +1,6 @@
-package de.elite.games.cli;
+package com.github.martinfrank.cli;
 
-import de.elite.games.cli.example.ExampleApplication;
+import com.github.martinfrank.cli.example.ExampleApplication;
 import org.junit.Assert;
 import org.junit.Test;
 
