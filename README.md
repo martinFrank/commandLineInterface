@@ -13,3 +13,6 @@ which can be executed.
 ### news
  - finally i managed to add support for [sonar cloud](https://sonarcloud.io/dashboard?id=martinFrank_cli)
  - finally i can do continuous integration with [cirrus-ci](https://cirrus-ci.com/)
+ - finally able to upload jars into the maven repository ()
+ 
+read the guid on how to deploy into [maven repository](https://maven.apache.org/repository/guide-central-repository-upload.html)
