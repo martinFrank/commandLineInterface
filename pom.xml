@@ -6,7 +6,7 @@
 
     <groupId>com.github.martinfrank</groupId>
     <artifactId>cli</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <name>cli</name>
     <description>this project provides a command line interface</description>
     <url>https://github.com/martinFrank/commandLineInterface</url>
@@ -64,6 +64,7 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>

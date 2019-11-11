@@ -10,6 +10,10 @@ execute it.
 To make that concept working, the Interpreter offers a set of commands,
 which can be executed.
 
+###version 0.2
+ - Seperation of main from cli
+ - provide access to help / exit
+
 ### news
  - finally i managed to add support for [sonar cloud](https://sonarcloud.io/dashboard?id=martinFrank_cli)
  - finally i can do continuous integration with [cirrus-ci](https://cirrus-ci.com/)

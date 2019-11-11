@@ -23,10 +23,6 @@ public abstract class Command<A> {
         return identifier;
     }
 
-    public boolean isIdentifier(String ident) {
-        return identifier.equals(ident);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,5 +34,10 @@ public abstract class Command<A> {
     @Override
     public int hashCode() {
         return Objects.hash(identifier);
+    }
+
+    @Override
+    public String toString() {
+        return getIdentifier();
     }
 }
