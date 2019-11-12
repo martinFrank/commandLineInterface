@@ -10,7 +10,6 @@ public class TestApp implements CommandProvider, CommandInterpreterProvider {
 
     public TestApp() {
         testCommandInterpreter = new CommandInterpreter(this);
-//        setCommandInterpreter(testCommandInterpreter);
         commandList = new DefaultCommandList();
         commandList.add(new ExitCommand(this));
         commandList.add(new FaultyCommand(this));
@@ -36,7 +35,4 @@ public class TestApp implements CommandProvider, CommandInterpreterProvider {
         return testCommandInterpreter;
     }
 
-//    @Override
-//    public void setCommandInterpreter(CommandInterpreter commandInterpreter) {
-//    }
 }

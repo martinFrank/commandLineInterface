@@ -8,5 +8,4 @@ public interface CommandInterpreterProvider {
 
     CommandInterpreter getCommandInterpreter();
 
-//    void setCommandInterpreter(CommandInterpreter commandInterpreter);
 }
