@@ -3,17 +3,17 @@ package com.github.martinfrank.cli;
 import com.github.martinfrank.cli.command.ExitCommand;
 import com.github.martinfrank.cli.command.FaultyCommand;
 
-public class TestApp implements CommandProvider {
+public class TestApp implements CommandProvider, CommandInterpreterProvider {
 
-    private final TestCommandInterpreter testCommandInterpreter;
-    private final CommandList commandList;
+    private final CommandInterpreter testCommandInterpreter;
+    private final DefaultCommandList commandList;
 
     public TestApp() {
-        testCommandInterpreter = new TestCommandInterpreter(this);
-        setCommandInterpreter(testCommandInterpreter);
+        testCommandInterpreter = new CommandInterpreter(this);
+//        setCommandInterpreter(testCommandInterpreter);
         commandList = new DefaultCommandList();
-        ((DefaultCommandList) commandList).add(new ExitCommand(this));
-        ((DefaultCommandList) commandList).add(new FaultyCommand(this));
+        commandList.add(new ExitCommand(this));
+        commandList.add(new FaultyCommand(this));
     }
 
     @Override
@@ -36,8 +36,7 @@ public class TestApp implements CommandProvider {
         return testCommandInterpreter;
     }
 
-    @Override
-    public void setCommandInterpreter(CommandInterpreter commandInterpreter) {
-
-    }
+//    @Override
+//    public void setCommandInterpreter(CommandInterpreter commandInterpreter) {
+//    }
 }
