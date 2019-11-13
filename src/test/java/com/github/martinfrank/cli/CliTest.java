@@ -15,7 +15,7 @@ public class CliTest {
         try (Scanner scanner = new Scanner(Objects.requireNonNull(
                 getClass().getClassLoader().getResourceAsStream("commands.txt")))) {
             testApp.getCommandInterpreter().setScanner(scanner);
-            testApp.startCli();
+            testApp.getCommandInterpreter().start();
         }
         Assert.assertFalse(testApp.getCommandInterpreter().isRunning());
     }
