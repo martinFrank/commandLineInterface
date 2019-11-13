@@ -21,16 +21,6 @@ public class TestApp implements CommandProvider, CommandInterpreterProvider {
     }
 
     @Override
-    public void stopCli() {
-        testCommandInterpreter.stop();
-    }
-
-    @Override
-    public void startCli() {
-        testCommandInterpreter.start();
-    }
-
-    @Override
     public CommandInterpreter getCommandInterpreter() {
         return testCommandInterpreter;
     }

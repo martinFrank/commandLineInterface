@@ -14,7 +14,7 @@ public class ExitCommand extends Command<TestApp> {
 
     @Override
     public Response execute(List<String> parameter) {
-        getApplication().stopCli();
+        getApplication().getCommandInterpreter().stop();
         return Response.success();
     }
 }
